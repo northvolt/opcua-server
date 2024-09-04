@@ -77,13 +77,14 @@ type UADataTypeDefinition struct {
 
 // UADataTypeField supports reading UANodeSet from xml.
 type UADataTypeField struct {
-	Description string               `xml:"Description"`
-	Definition  UADataTypeDefinition `xml:"Definition"`
-	Name        string               `xml:"Name,attr"`
-	DataType    string               `xml:"DataType,attr"`
-	ValueRank   int                  `xml:"ValueRank,attr"`
-	Value       int                  `xml:"Value,attr"`
-	IsOptional  bool                 `xml:"IsOptional,attr"`
+	Description     string               `xml:"Description"`
+	Definition      UADataTypeDefinition `xml:"Definition"`
+	Name            string               `xml:"Name,attr"`
+	DataType        string               `xml:"DataType,attr"`
+	ValueRank       int                  `xml:"ValueRank,attr"`
+	Value           int                  `xml:"Value,attr"`
+	IsOptional      bool                 `xml:"IsOptional,attr"`
+	MaxStringLength uint32               `xml:"MaxStringLength,attr"`
 }
 
 // ListOfBoolean supports reading UANodeSet from xml.

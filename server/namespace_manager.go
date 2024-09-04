@@ -603,17 +603,60 @@ func (m *NamespaceManager) LoadNodeSetFromBuffer(buf []byte) error {
 				n.IsAbstract,
 			)
 		case "UADataType":
-			nodes[i] = NewDataTypeNode(
-				srv,
-				toNodeID(n.NodeID, aliases, nsMap),
-				toBrowseName(n.BrowseName, nsMap),
-				toLocalizedText(n.DisplayName),
-				toLocalizedText(n.Description),
-				nil,
-				toRefs(n.References, aliases, nsMap),
-				n.IsAbstract,
-				nil,
-			)
+			if n.Definition != nil {
+				// definitions are used in the prosys UI to resolve a datatype to fields with values.
+				definitionFields := []ua.StructureField{}
+				for _, v := range n.Definition.Field {
+					if v.DataType == "" {
+						continue
+					}
+
+					nodeID := ua.ParseNodeID(v.DataType)
+					if nodeID == nil {
+						panic(fmt.Sprintf("datatype %q has definitionfield that references %q which could not be parsed", n.NodeID, v.DataType))
+					}
+					// ensure valueRank is -1, if not set (parsing xml will result in default value 0 set)
+					if v.ValueRank == 0 {
+						v.ValueRank = -1
+					}
+					definitionFields = append(definitionFields, ua.StructureField{
+						Name:            v.Name,
+						DataType:        nodeID,
+						ValueRank:       int32(v.ValueRank),
+						MaxStringLength: v.MaxStringLength,
+					})
+				}
+
+				defEncodingNodeID := ua.ParseNodeID(fmt.Sprintf("%s/DefaultBinary", n.NodeID))
+				nodes[i] = NewDataTypeNode(
+					srv,
+					toNodeID(n.NodeID, aliases, nsMap),
+					toBrowseName(n.BrowseName, nsMap),
+					toLocalizedText(n.DisplayName),
+					toLocalizedText(n.Description),
+					nil,
+					toRefs(n.References, aliases, nsMap),
+					n.IsAbstract,
+					ua.StructureDefinition{
+						DefaultEncodingID: defEncodingNodeID,
+						BaseDataType:      ua.DataTypeIDStructure,
+						StructureType:     ua.StructureTypeStructure,
+						Fields:            definitionFields,
+					},
+				)
+			} else {
+				nodes[i] = NewDataTypeNode(
+					srv,
+					toNodeID(n.NodeID, aliases, nsMap),
+					toBrowseName(n.BrowseName, nsMap),
+					toLocalizedText(n.DisplayName),
+					toLocalizedText(n.Description),
+					nil,
+					toRefs(n.References, aliases, nsMap),
+					n.IsAbstract,
+					nil,
+				)
+			}
 		case "UAReferenceType":
 			nodes[i] = NewReferenceTypeNode(
 				srv,
