@@ -18,9 +18,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/awcullen/opcua/ua"
 	"github.com/djherbis/buffer"
 	"github.com/google/uuid"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // FindServers returns the Servers known to a Server or Discovery Server.

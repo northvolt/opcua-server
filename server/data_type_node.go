@@ -5,7 +5,7 @@ package server
 import (
 	"sync"
 
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // DataTypeNode is a Node class that describes the syntax of a variable's Value.

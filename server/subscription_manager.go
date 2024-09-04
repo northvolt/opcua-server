@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/awcullen/opcua/ua"
 	"github.com/google/uuid"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // SubscriptionManager manages the subscriptions for a server.

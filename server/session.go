@@ -6,7 +6,7 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 type publishOp struct {

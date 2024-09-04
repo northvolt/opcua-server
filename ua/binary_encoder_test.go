@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/awcullen/opcua/ua"
 	"github.com/google/uuid"
+	"github.com/northvolt/opcua-server/ua"
 	"gotest.tools/assert"
 )
 

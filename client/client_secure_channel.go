@@ -27,8 +27,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/awcullen/opcua/ua"
 	"github.com/djherbis/buffer"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 const (

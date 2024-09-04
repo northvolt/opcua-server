@@ -3,7 +3,7 @@
 package server
 
 import (
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // Node ...

@@ -13,9 +13,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/awcullen/opcua/ua"
 	"github.com/gammazero/deque"
 	"github.com/google/uuid"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 var (

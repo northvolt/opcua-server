@@ -4,7 +4,7 @@ import (
 	"crypto/sha1"
 	"fmt"
 
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // RolesProvider looks up the roles for the given user identity and connection information.

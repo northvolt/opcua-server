@@ -6,20 +6,20 @@ import (
 	"testing"
 	"time"
 
-	awcullen "github.com/awcullen/opcua/ua"
 	gopcua "github.com/gopcua/opcua/ua"
+	awcullen "github.com/northvolt/opcua-server/ua"
 )
 
-/* 
+/*
 run file benchmarks, results similar to:
-pkg: github.com/awcullen/opcua/cmd/benchmark
+pkg: github.com/northvolt/opcua-server/cmd/benchmark
 cpu: Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz
 BenchmarkGopcuaEncode
 BenchmarkGopcuaEncode-4     	  120178	      9332 ns/op	    2536 B/op	      97 allocs/op
 BenchmarkAwcullenEncode
 BenchmarkAwcullenEncode-4   	 1728259	       859.3 ns/op	     154 B/op	       4 allocs/op
 PASS
- */
+*/
 
 // BenchmarkGopcuaEncode encodes typical payload to a mock network connection.
 func BenchmarkGopcuaEncode(b *testing.B) {

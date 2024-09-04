@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 type VariableNode struct {

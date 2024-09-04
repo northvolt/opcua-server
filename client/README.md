@@ -1,4 +1,4 @@
-# client - [![Godoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/mod/github.com/awcullen/opcua/client) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/awcullen/opcua/master/LICENSE)
+# client - [![Godoc](http://img.shields.io/badge/go-documentation-blue.svg?style=flat-square)](https://pkg.go.dev/mod/github.com/northvolt/opcua-server/client) [![License](http://img.shields.io/badge/license-mit-blue.svg?style=flat-square)](https://raw.githubusercontent.com/northvolt/opcua-server/master/LICENSE)
 Browse, read, write and subscribe to data published by the OPC UA servers in your network.
 
 With this package, you can call any service of the OPC Unified Architecture, see https://reference.opcfoundation.org/v104/Core/docs/Part4/
@@ -15,8 +15,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/awcullen/opcua/client"
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/client"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 func ExampleClient_Read() {

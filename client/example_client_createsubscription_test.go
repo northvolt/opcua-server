@@ -6,8 +6,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/awcullen/opcua/client"
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/client"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // This example demonstrates subscribing to the server's 'CurrentTime' variable and receiving data changes.
@@ -48,8 +48,8 @@ func ExampleClient_CreateSubscription() {
 		TimestampsToReturn: ua.TimestampsToReturnBoth,
 		ItemsToCreate: []ua.MonitoredItemCreateRequest{
 			{
-				ItemToMonitor:  ua.ReadValueID{
-					NodeID: ua.VariableIDServerServerStatusCurrentTime, 
+				ItemToMonitor: ua.ReadValueID{
+					NodeID:      ua.VariableIDServerServerStatusCurrentTime,
 					AttributeID: ua.AttributeIDValue,
 				},
 				MonitoringMode: ua.MonitoringModeReporting,

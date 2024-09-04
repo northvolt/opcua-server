@@ -5,7 +5,7 @@ package server
 import (
 	"sync"
 
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // MethodNode is a Node class that describes the syntax of a object's Method.

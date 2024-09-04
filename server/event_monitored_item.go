@@ -8,8 +8,8 @@ import (
 
 	"sync"
 
-	"github.com/awcullen/opcua/ua"
 	deque "github.com/gammazero/deque"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // EventMonitoredItem specifies a node that is monitored for events.

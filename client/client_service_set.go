@@ -5,7 +5,7 @@ package client
 import (
 	"context"
 
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // FindServers returns the Servers known to a Server or Discovery Server.

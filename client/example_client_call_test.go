@@ -6,8 +6,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/awcullen/opcua/client"
-	"github.com/awcullen/opcua/ua"
+	"github.com/northvolt/opcua-server/client"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // This example demonstrates calling an method of the server to add two integers and return the sum.

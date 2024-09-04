@@ -1,6 +1,6 @@
 package server
 
-import "github.com/awcullen/opcua/ua"
+import "github.com/northvolt/opcua-server/ua"
 
 // UserNameIdentityAuthenticator authenticates AnonymousIdentity.
 type AnonymousIdentityAuthenticator interface {

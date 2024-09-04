@@ -11,8 +11,8 @@ import (
 
 	"sync"
 
-	"github.com/awcullen/opcua/ua"
 	deque "github.com/gammazero/deque"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 // DataChangeMonitoredItem specifies the node and attribute that is monitored for data changes.

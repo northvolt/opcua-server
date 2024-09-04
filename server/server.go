@@ -15,8 +15,8 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/awcullen/opcua/ua"
 	"github.com/gammazero/workerpool"
+	"github.com/northvolt/opcua-server/ua"
 )
 
 const (
