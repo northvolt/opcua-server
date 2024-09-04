@@ -546,6 +546,8 @@ func (m *NamespaceManager) LoadNodeSetFromFile(path string) error {
 
 // LoadNodeSetFromBuffer loads the UANodeSet XML from a buffer into the namespace.
 func (m *NamespaceManager) LoadNodeSetFromBuffer(buf []byte) error {
+	// todo(mm): rewrite namespace index to 2, since not setting to ns=2 breaks datatypes referencing subdatatypes with depth > 2
+	// todo(mm): force AccessLevel="3" UserAccessLevel="3" for variables to ensure that during debug you are not forbidden to set values
 	srv := m.server
 	set := &ua.UANodeSet{}
 	err := xml.Unmarshal(buf, &set)
