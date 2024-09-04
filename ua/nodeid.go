@@ -160,6 +160,26 @@ func ParseNodeID(s string) NodeID {
 		}
 		return NodeIDOpaque{uint16(ns), ByteString(id)}
 	}
+
+	switch strings.ToLower(s) {
+	case "string":
+		return DataTypeIDString
+	case "boolean":
+		return DataTypeIDBoolean
+	case "int16":
+		return DataTypeIDInt16
+	case "int32":
+		return DataTypeIDInt32
+	case "int64":
+		return DataTypeIDInt64
+	case "datetime":
+		return DataTypeIDUtcTime
+	case "float":
+		return DataTypeIDFloat
+	case "double":
+		return DataTypeIDDouble
+
+	}
 	return nil
 }
 
