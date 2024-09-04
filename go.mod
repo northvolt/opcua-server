@@ -1,4 +1,4 @@
-module github.com/awcullen/opcua
+module github.com/northvolt/opcua-server
 
 go 1.20
 
