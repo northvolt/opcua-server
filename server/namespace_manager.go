@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"regexp"
 	"strconv"
 	"strings"
 	"sync"
@@ -544,10 +545,26 @@ func (m *NamespaceManager) LoadNodeSetFromFile(path string) error {
 	return m.LoadNodeSetFromBuffer(buf)
 }
 
+// rewriteInput rewrite namespace index to 2, since not setting to ns=2 breaks datatypes referencing subdatatypes with depth > 2
+// force AccessLevel="3" UserAccessLevel="3" for variables to ensure that during debug you are not forbidden to set values
+func rewriteInput(buf []byte) []byte {
+	replacements := map[string]string{
+		`"1:`:              `"2:`,
+		`ns=1;s=`:          `ns=2;s=`,
+		`AccessLevel="\d"`: `AccessLevel="3"`,
+	}
+
+	for pattern, replacement := range replacements {
+		re := regexp.MustCompile(pattern)
+		buf = re.ReplaceAll(buf, []byte(replacement))
+	}
+
+	return buf
+}
+
 // LoadNodeSetFromBuffer loads the UANodeSet XML from a buffer into the namespace.
 func (m *NamespaceManager) LoadNodeSetFromBuffer(buf []byte) error {
-	// todo(mm): rewrite namespace index to 2, since not setting to ns=2 breaks datatypes referencing subdatatypes with depth > 2
-	// todo(mm): force AccessLevel="3" UserAccessLevel="3" for variables to ensure that during debug you are not forbidden to set values
+	buf = rewriteInput(buf)
 	srv := m.server
 	set := &ua.UANodeSet{}
 	err := xml.Unmarshal(buf, &set)
