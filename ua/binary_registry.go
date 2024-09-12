@@ -20,10 +20,14 @@ func RegisterBinaryEncodingID(typ reflect.Type, id ExpandedNodeID) {
 		panic(fmt.Sprintf("RegisterBinaryEncodingID: registering duplicate types for %q: %s != %s", id, t, typ))
 	}
 
-	if n, dup := binaryEncodingIDs.LoadOrStore(typ, id); dup && n != id {
-		binaryEncodingTypes.Delete(id)
-		panic(fmt.Sprintf("RegisterBinaryEncodingID: registering duplicate ids for %s: %q != %q", typ, n, id))
-	}
+	// workaround since our distict types' interfaces are sometime identical
+	// todo(mm): lift question regarding why we need distinct types
+	binaryEncodingIDs.LoadOrStore(typ, id)
+
+	// if n, dup := binaryEncodingIDs.LoadOrStore(typ, id); dup && n != id {
+	// 	binaryEncodingTypes.Delete(id)
+	// 	panic(fmt.Sprintf("RegisterBinaryEncodingID: registering duplicate ids for %s: %q != %q", typ, n, id))
+	// }
 
 }
 
