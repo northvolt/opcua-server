@@ -178,7 +178,8 @@ func ParseNodeID(s string) NodeID {
 		return DataTypeIDFloat
 	case "double":
 		return DataTypeIDDouble
-
+	case "byte":
+		return DataTypeIDByte
 	}
 	return nil
 }
